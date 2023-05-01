@@ -1,0 +1,52 @@
+---
+title: "Sorting and Searching Algorithms"
+author: "Alejandro Santoyo Cano"
+date: "Last modification date: `r format(Sys.Date(), '%d %m %Y')`"
+output: 
+  html_document:
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    toc_depth: 3
+    number_section: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center',echo = TRUE)
+```
+
+```{r librerias, include=FALSE}
+
+```
+# Sorting
+Objective: this Rmd will allow us to compare different sorting and searching algorithms.
+
+```{r generate rondom vector of integers}
+set.seed(123)
+rand_nums <- sample(1:100,10)
+#rand_nums
+nums <- rand_nums
+nums
+```
+
+## Insertion sort
+
+```{r Insertion sort}
+insertion_sort <- function(vec){
+  for(i in 2:length(vec)){
+    j <- i
+    while( (j>1) && (vec[j-1]>vec[j])){
+        vec[j-1]<- vec[j-1] + vec[j]
+        vec[j]<- vec[j-1] - vec[j]
+        vec[j-1]<- vec[j-1] - vec[j]
+        j <- j - 1
+    }
+  }
+  return(vec)
+}
+nums
+insertion_sort(nums)
+
+```
